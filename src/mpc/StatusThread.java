@@ -46,7 +46,6 @@ public class StatusThread extends Thread{
 			checkPlayingStatus();
 
 		} catch(IOException e){
-			e.printStackTrace();
 			mpc.connectionFailed("Connection failed, check settings");
 		}
 		try{
