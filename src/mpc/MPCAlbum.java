@@ -1,5 +1,7 @@
 package mpc;
 
+import java.io.Serializable;
+
 /**
  * Holds the required information of an album and allows comparison
  * between albums.
@@ -7,8 +9,9 @@ package mpc;
  * @author thelollies
  */
 
-public class MPCAlbum {
+public class MPCAlbum implements MPCMusicMeta, Serializable{
 
+	private static final long serialVersionUID = -6258459282985043182L;
 	public final String artist;
 	public final String title;
 	
@@ -56,5 +59,15 @@ public class MPCAlbum {
 			return artist.equals(otherAlbum.artist) && title.equals(otherAlbum.title);
 		}
 		return false;
+	}
+
+	@Override
+	public String getName() {
+		return title;
+	}
+
+	@Override
+	public String getDescription() {
+		return artist;
 	}
 }
