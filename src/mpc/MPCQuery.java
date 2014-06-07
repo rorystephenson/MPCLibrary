@@ -1,5 +1,7 @@
 package mpc;
 
+import java.io.Serializable;
+
 /**
  * Holds a query in a compact form which can be passed to the database
  * to fetch songs or compared with other queries rather than comparing
@@ -11,11 +13,12 @@ package mpc;
  * @author thelollies
  */
 
-public class MPCQuery{
+public class MPCQuery implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private int type = 0;
-	private String artist = "";
-	private String album = "";
+	private MPCArtist artist = null;
+	private MPCAlbum album = null;
 	private int buttonId = 0;
 	
 	// Note:
@@ -43,7 +46,7 @@ public class MPCQuery{
 	 * information.
 	 * @param type MPCQuery constant indicating type of query
 	 */
-	public MPCQuery(int type, String artist){
+	public MPCQuery(int type, MPCArtist artist){
 		this.type = type;
 		this.artist = artist;
 	}
@@ -56,9 +59,8 @@ public class MPCQuery{
 	 *  
 	 * @param type MPCQuery constant indicating type of query
 	 */
-	public MPCQuery(int type, String artist, String album){
+	public MPCQuery(int type, MPCAlbum album){
 		this.type = type;
-		this.artist = artist;
 		this.album = album;
 	}
 	
@@ -84,14 +86,14 @@ public class MPCQuery{
 	/**
 	 * @return the query's artist
 	 */
-	public String getArtist(){
+	public MPCArtist getArtist(){
 		return artist;
 	}
 	
 	/**
 	 * @return the query's album
 	 */
-	public String getAlbum(){
+	public MPCAlbum getAlbum(){
 		return album;
 	}
 	
