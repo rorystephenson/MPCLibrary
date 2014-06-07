@@ -208,4 +208,9 @@ public class MPC {
 	public void setMPCDatabaseListener(MPCDatabaseListener mpcDatabaseListener){
 		this.mpcDatabaseListener = mpcDatabaseListener;
 	}
+
+	public void updateSettings(int port, String address) {
+		this.port = port;
+		this.address = address;
+	}
 }
