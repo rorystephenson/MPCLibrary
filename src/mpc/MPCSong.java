@@ -1,7 +1,10 @@
 package mpc;
 
-public class MPCSong {
+import java.io.Serializable;
 
+public class MPCSong implements MPCMusicMeta, Serializable{
+
+	private static final long serialVersionUID = -4086877256118974496L;
 	public final String file;
 	public final int time;
 	public final String artist;
@@ -30,5 +33,24 @@ public class MPCSong {
 	@Override
 	public String toString(){
 		return title;
+	}
+
+	@Override
+	public String getName() {
+		return title;
+	}
+
+	@Override
+	public String getDescription() {
+		return artist;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof MPCSong)) return false;
+		
+		MPCSong s = (MPCSong) obj;
+		
+		return file.equals(s.file); 
 	}
 }
