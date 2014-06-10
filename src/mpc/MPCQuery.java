@@ -6,11 +6,8 @@ import java.io.Serializable;
  * Holds a query in a compact form which can be passed to the database
  * to fetch songs or compared with other queries rather than comparing
  * a list of results of the query to see if the lists are the same.
- * 
- * This class implmenets parcelable so that it can be passed in intents
- * between activites.
- * 
- * @author thelollies
+ *  
+ * @author Rory Stephenson
  */
 
 public class MPCQuery implements Serializable{
@@ -19,7 +16,6 @@ public class MPCQuery implements Serializable{
 	private int type = 0;
 	private MPCArtist artist = null;
 	private MPCAlbum album = null;
-	private int buttonId = 0;
 	
 	// Note:
 	// Queries with return type MPCSong <= 3
@@ -37,8 +33,32 @@ public class MPCQuery implements Serializable{
 	 * information.
 	 * @param type MPCQuery constant indicating type of query
 	 */
-	public MPCQuery(int type){
+	private MPCQuery(int type){
 		this.type = type;
+	}
+	
+	public static MPCQuery allSongsQuery(){
+		return new MPCQuery(ALL_SONGS);
+	}
+	
+	public static MPCQuery allArtistsQuery(){
+		return new MPCQuery(ALL_ARTISTS);
+	}
+	
+	public static MPCQuery allAlbumsQuery(){
+		return new MPCQuery(ALL_ALBUMS);
+	}
+	
+	public static MPCQuery songsByArtist(MPCAlbum album){
+		return new MPCQuery(SONGS_BY_ARTIST, album);
+	}
+	
+	public static MPCQuery songsByAlbumArtist(MPCAlbum album){
+		return new MPCQuery(SONGS_BY_ALBUM_ARTIST, album);
+	}
+	
+	public static MPCQuery albumsByArtist(MPCArtist artist){
+		return new MPCQuery(ALBUMS_BY_ARTIST, artist);
 	}
 	
 	/**
@@ -46,7 +66,7 @@ public class MPCQuery implements Serializable{
 	 * information.
 	 * @param type MPCQuery constant indicating type of query
 	 */
-	public MPCQuery(int type, MPCArtist artist){
+	private MPCQuery(int type, MPCArtist artist){
 		this.type = type;
 		this.artist = artist;
 	}
@@ -59,7 +79,7 @@ public class MPCQuery implements Serializable{
 	 *  
 	 * @param type MPCQuery constant indicating type of query
 	 */
-	public MPCQuery(int type, MPCAlbum album){
+	private MPCQuery(int type, MPCAlbum album){
 		this.type = type;
 		this.album = album;
 	}
@@ -70,8 +90,7 @@ public class MPCQuery implements Serializable{
 			MPCQuery q = (MPCQuery) o;
 			return (type == q.getType() && 
 					artist.equals(q.getArtist()) 
-					&& album.equals(q.getAlbum())
-					&& buttonId == q.getButtonId());
+					&& album.equals(q.getAlbum()));
 		}
 		return false;
 	}
@@ -97,20 +116,4 @@ public class MPCQuery implements Serializable{
 		return album;
 	}
 	
-	/**
-	 * Sets the id of the button pertaining to the category this query was
-	 * made from
-	 */
-	
-	public void setButton(int buttonId){
-		this.buttonId = buttonId;
-	}
-	
-	/**
-	 * @return the id of the button pertaining to the category from which this query was made
-	 */
-	public int getButtonId() {
-		return buttonId;
-	}
-
 }
