@@ -5,6 +5,11 @@ import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+/**
+ * Sends messages to MPD server which do not require a response
+ * @author Rory Stephenson
+ *
+ */
 public class MessageThread extends Thread{
 
 	private MPC mpc;

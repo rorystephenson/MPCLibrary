@@ -6,7 +6,8 @@ import java.io.Serializable;
  * Holds the required information of an album and allows comparison
  * between albums.
  * 
- * @author thelollies
+ * @author Rory Stephenson
+ * 
  */
 
 public class MPCAlbum implements MPCMusicMeta, Serializable{

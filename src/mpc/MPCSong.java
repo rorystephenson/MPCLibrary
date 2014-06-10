@@ -2,6 +2,11 @@ package mpc;
 
 import java.io.Serializable;
 
+/**
+ * Represents a song object and allows comparison between them
+ * @author Rory Stephenson
+ *
+ */
 public class MPCSong implements MPCMusicMeta, Serializable{
 
 	private static final long serialVersionUID = -4086877256118974496L;

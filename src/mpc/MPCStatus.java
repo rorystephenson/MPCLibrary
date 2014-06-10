@@ -1,5 +1,11 @@
 package mpc;
 
+/**
+ * Represents the current status of the MPClient. This includes whether a song is playing,
+ * whether shuffle is enabled and the current volume.
+ * @author Rory Stephenson
+ *
+ */
 public class MPCStatus {
 	
 	public final boolean playing;

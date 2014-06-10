@@ -2,6 +2,13 @@ package mpc;
 
 import java.io.Serializable;
 
+/**
+ * Holds the required information of an artist and allows comparison
+ * between albums.
+ * 
+ * @author Rory Stephenson
+ * 
+ */
 public class MPCArtist implements MPCMusicMeta, Serializable{
 
 	private static final long serialVersionUID = -2710919412357353967L;
@@ -9,12 +16,7 @@ public class MPCArtist implements MPCMusicMeta, Serializable{
 	
 	/**
 	 * Holds the required information for artists
-	 * @param file uri of the music file
-	 * @param time length of the song
 	 * @param artist artist name
-	 * @param title song name
-	 * @param album album name
-	 * @param track track number on the CD
 	 */
 	public MPCArtist(String artist){
 		this.title = artist == null ? "Unknown Artist" : artist;
